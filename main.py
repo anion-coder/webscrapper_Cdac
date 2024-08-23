@@ -84,63 +84,6 @@ def no_of_entries():
 # Function to convert chart to data points
 import time
 
-# def convert_chart_to_datapoints(number_of_rows):
-#     try:
-#         # Step 1: Click the settings button on the chart
-#         settings_button_xpath = '//*[@id="statisticContainer"]/div[2]/div/div[1]/div[3]/button'
-#         settings_button = wait.until(EC.element_to_be_clickable((By.XPATH, settings_button_xpath)))
-#         settings_button.click()
-#         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, '//*[@id="statisticContainer"]/div[2]/div/div[2]/div/div/fieldset[1]/div[1]/button[3]')))
-
-#         # Step 2: Select the option to view data points
-#         data_points_option_xpath = '//*[@id="statisticContainer"]/div[2]/div/div[2]/div/div/fieldset[1]/div[1]/button[3]'
-#         data_points_option = wait.until(EC.element_to_be_clickable((By.XPATH, data_points_option_xpath)))
-#         data_points_option.click()
-        
-#         # Optional: Wait a bit longer if the data takes time to load
-#         time.sleep(5)  # Adjust the sleep duration if needed
-
-#         # Step 3: Close the settings or data points view if necessary
-#         close_button_xpath = '//*[@id="statisticContainer"]/div[2]/div/div[2]/div/button'
-#         close_button = wait.until(EC.element_to_be_clickable((By.XPATH, close_button_xpath)))
-#         close_button.click()
-
-#         # Step 4: Scrape the data points from the table
-#         data = []
-
-#         for i in range(1, number_of_rows + 1):  # Loop through each row
-#             row_xpath = f'//*[@id="data-table-1724315321850"]/tbody/tr[i]/td[i]'
-            
-#             # //*[@id="data-table-1724381536584"]/tbody/tr[1]/td[1]
-#             # //*[@id="data-table-1724381536584"]/tbody/tr[1]/td[1]/span
-            
-            
-#             try:
-#                 row = wait.until(EC.presence_of_element_located((By.XPATH, row_xpath)))
-#                 span_elements = row.find_elements(By.XPATH, '/span')
-#                 row_data = [span.text for span in span_elements]
-
-#                 if row_data:
-#                     data.append(row_data)
-#                 else:
-#                     print(f"Row {i} is empty.")
-#             except Exception as row_e:
-#                 print(f"Failed to locate row {i}: {row_e}")
-
-#         # Convert the extracted data to a DataFrame
-#         if data:
-#             df = pd.DataFrame(data)
-#             return df
-#         else:
-#             print("No data found.")
-#             return None
-
-#     except Exception as e:
-#         print("Failed to convert chart to data points:", e)
-#         return None
-
-
-
 def convert_chart_to_datapoints(number_of_rows):
     try:
         # Step 1: Click the settings button on the chart
