@@ -233,10 +233,10 @@ def extract_links():
     links = []
     
     try:
-        div_path = '/html/body/div[4]/main/section[2]/section/div[1]/section[2]/div/div/div'
-        div = driver.find_element(By.XPATH, div_path)
-        for i in range(0,total_page_no):
-            for i in range(1, 25):
+        for page in range(total_page_no):
+            div_path = '/html/body/div[4]/main/section[2]/section/div[1]/section[2]/div/div/div'
+            div = driver.find_element(By.XPATH, div_path)
+            for i in range(1, 26):
             
                  try:
                      div_links = div.find_elements(By.XPATH, f'.//div[{i}]/div[1]/div[1]/a')
@@ -244,13 +244,18 @@ def extract_links():
                          links.append(l.get_attribute('href')) 
                  except Exception as e:
                      print(f"Failed to extract link from div[{i}]:", e)
-            try:
-                next_button_xpath = '//*[@id="searchPaginator"]/div/div/ul/li[5]/button'
-                button = wait.until(EC.element_to_be_clickable((By.XPATH, next_button_xpath)))
-                button.click()
-                
-            except Exception as e: 
-                print("Failed to click button:",e)
+            # Navigate to the next page
+            if page < total_page_no - 1:  # To avoid clicking next on the last page
+                try:
+                    next_button_xpath = '//*[@id="searchPaginator"]/div/div/ul/li[5]/button'
+                    button = wait.until(EC.element_to_be_clickable((By.XPATH, next_button_xpath)))
+                    button.click()
+
+                    # Wait for the page to load before extracting links again
+                    time.sleep(2)
+
+                except Exception as e: 
+                    print("Failed to click button:", e)
                 
             
 

@@ -1,0 +1,21 @@
+# Ignore log files
+*.log
+
+# Ignore environment files
+.env
+
+.venv
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore MacOS system files
+.DS_Store
+
+#Ignore statista files
+statista_data.json
+statista_data_with_descriptions.json
